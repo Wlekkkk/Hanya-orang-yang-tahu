@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thumbnail Foto & Lirik Lagu</title>
+  <style>
+    /* CSS */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-top: 2px;
+    }
+
+    .thumbnail {
+      width: 330px;
+      height: 380px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .lyrics {
+            text-align: center;
+            line-height: 1.2;
+            font-size: 17px
+    }
+    .audio-container {
+      margin-top: 2px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #999;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Kangen ya sama yang di fotooo 😏</h1>
+    
+    <div class="photo-container">
+      <img src="Gambar.jpg" alt="Thumbnail Foto" class="thumbnail" id="thumbnail">
+    </div>
+    <div class="audio-container">
+      <audio controls>
+        <source src="Lagu.mp3" type="audio/mp3">
+      </audio>
+    </div>
+    <div class="lyrics">
+      <h2>Lirik Lagu</h2>
+      <pre>
+Kar'na separuh aku
+Menyentuh laramuuuu
+Semua lukamu t'lah menjadi lirihku
+ Kar'na separuh aaaku
+Dirimu.
+      </pre>
+    </div>
+  
+    <!-- Modal untuk perbesar foto -->
+    <div id="myModal" class="modal">
+      <span class="close" id="closeBtn">&times;</span>
+      <img class="modal-content" id="modalImage">
+    </div>
+    
+  </div>
+
+  <script>
+    // JavaScript
+
+    // Mendapatkan elemen-elemen yang diperlukan
+    const thumbnail = document.getElementById("thumbnail");
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementById("closeBtn");
+
+    // Ketika thumbnail diklik, tampilkan modal dengan foto yang diperbesar
+    thumbnail.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = thumbnail.src; // Menampilkan gambar yang sama dengan thumbnail
+    }
+
+    // Menutup modal ketika klik tombol close
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Menutup modal jika klik di luar gambar
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
